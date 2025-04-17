@@ -1,3 +1,5 @@
 #!/bin/bash
 
-bundle exec jekyll b
+python ./webhook_server.py
+
+bundle exec jekyll b --watch
