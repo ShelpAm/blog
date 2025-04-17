@@ -25,8 +25,10 @@
 
 ### Usage
 
-- Start the server by `./watch.sh`
+- Start the server by `bundle exec jekyll s`
 - Start the webhook server by `python ./webhook_server.py`
+- Build websites by `./build.sh`
+- Start build watcher by `./watch.sh`
 
 ## ***The below are README info from the original repository.***
 
