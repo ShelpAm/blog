@@ -12,6 +12,7 @@ app = Flask(__name__)
 @app.route("/webhook", methods=["POST"])
 def webhook():
     # You can add a GitHub secret validation here if needed
+    print("Pulling from the server")
     subprocess.Popen(["git", "pull"])
     return "OK", 200
 
