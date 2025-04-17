@@ -1,5 +1,35 @@
 # Chirpy Starter
 
+## Quick start
+
+### Prerequisite
+
+1. `sudo apt-get install ruby-full build-essential zlib1g-dev git`
+1. Run the following code to init gem paths:
+    ```bash
+    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+1. Clone this repository and change to that directory.
+    ```bash
+    git clone https://github.com/ShelpAm/blog.git && cd blog
+    ```
+1. Install Jekyll and Bundler:
+    ```bash
+    gem install jekyll bundler
+    ```
+1. Run `bundle` to install the dependencies of `jekyll`.
+1. Run `pip install -r requirements.txt` to install python dependencies.
+
+### Usage
+
+- Start the server by `./watch.sh`
+- Start the webhook server by `python ./webhook_server.py`
+
+## ***The below are README info from the original repository.***
+
 [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
 [![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
 
