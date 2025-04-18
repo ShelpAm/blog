@@ -1,9 +1,9 @@
-# Nvidia kernal module missing on startup
+# Nvidia kernel module missing on startup
 
 ## Problem
 
 Recently, I upgraded my linux kernel to version 6.13.0 and 6.14. But I could see
-"Nvidia kernal module missing" in both version after reboot.
+"Nvidia kernel module missing" in both version after reboot.
 
 It seemed that I didn't install corresponding nvidia graphic card driver. And
 `sudo akmods --force` wouldn't fix the bug.
@@ -29,7 +29,7 @@ So here comes the solution.
 ## Solution
 
 0. If you don't have akmods in your system, install it by `sudo dnf install akmods`.
-1. Edit /usr/lib/rpm/macros.d/macros.kmodtool, uncomment line 67 to `%_kmodtool_zipmodules 0`.
+1. In /usr/lib/rpm/macros.d/macros.kmodtool, uncomment line 67 to `%_kmodtool_zipmodules 0`.
 2. `sudo akmods --force`
 3. Reboot your computer.
 
