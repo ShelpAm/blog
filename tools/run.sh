@@ -3,13 +3,6 @@
 # Run jekyll serve and then launch the site
 
 
-# ShelpAm
-# Add baidu verification to verify my rights to the website
-echo "Copying baidu verification file"
-[ -d _site ] || mkdir _site
-cp baidu_verify_*.html _site/
-
-
 prod=false
 command="bundle exec jekyll s -l"
 host="127.0.0.1"
