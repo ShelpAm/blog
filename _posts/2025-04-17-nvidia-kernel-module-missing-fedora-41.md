@@ -1,6 +1,5 @@
 ---
 tags: nvidia fedora kernel-module
-# tag: 
 ---
 
 # Nvidia kernel module missing on startup
