@@ -125,7 +125,7 @@ comments:
     category_id: DIC_kwDOOcp1_M4CpSFD
     mapping: pathname # optional, default to 'pathname'
     strict: 1 # optional, default to '0'
-    input_position: top # optional, default to 'bottom'
+    input_position: bottom # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: 1 # optional, default to the value of `1`
 
