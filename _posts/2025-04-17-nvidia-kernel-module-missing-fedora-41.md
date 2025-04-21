@@ -1,8 +1,7 @@
 ---
+title: Nvidia kernel module missing on startup (Fedora 41/42)
 tags: nvidia fedora kernel-module
 ---
-
-# Nvidia kernel module missing on startup
 
 ## Problem
 
@@ -11,8 +10,6 @@ Recently, I upgraded my linux kernel to version 6.13.0 and 6.14. But I could see
 
 It seemed that I didn't install corresponding nvidia graphic card driver. And
 `sudo akmods --force` wouldn't fix the bug.
-
-(I'm using Fedora 42)
 
 ## Thoughts
 
