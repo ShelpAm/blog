@@ -25,12 +25,11 @@
 
 ### Usage
 
-- Start the server by `bundle exec jekyll serve --host 0.0.0.0 --drafts`
-- Start the webhook server by `python ./webhook_server.py`
-- Build websites by `./build.sh`
-- Start build watcher by `./watch.sh`
+- Start the server by `./tools/run.sh`
+- To test the project: `./tools/test.sh`
+- To start the webhook server, run `python ./tools/webhook_server.py`
 
-## ***The below are README info from the original repository.***
+## ***The belows are README info from the original repository.***
 
 [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
 [![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
