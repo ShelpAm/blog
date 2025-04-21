@@ -7,6 +7,10 @@ from flask import Flask
 import subprocess
 import sys
 
+if len(sys.argv) < 2:
+    print("usage: python webhook_server.py <build-destination>")
+    exit(1)
+
 dest = sys.argv[1]
 
 app = Flask(__name__)
@@ -18,6 +22,7 @@ def webhook():
     print("Pulling from the server")
     subprocess.Popen(["git", "pull"])
     subprocess.Popen(["jekyll", "build"])
+    print(f"Moving _site to {dest}")
     subprocess.Popen(["mv", "_site", dest])
     return "OK", 200
 
