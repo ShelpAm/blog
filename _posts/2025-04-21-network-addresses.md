@@ -1,5 +1,6 @@
 ---
 title: Network addresses
+categories: notes-computer-networking
 ---
 
 ## Introduction
