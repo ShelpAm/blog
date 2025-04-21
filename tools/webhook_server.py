@@ -5,6 +5,9 @@
 
 from flask import Flask
 import subprocess
+import sys
+
+dest = sys.argv[1]
 
 app = Flask(__name__)
 
@@ -14,6 +17,8 @@ def webhook():
     # You can add a GitHub secret validation here if needed
     print("Pulling from the server")
     subprocess.Popen(["git", "pull"])
+    subprocess.Popen(["jekyll", "build"])
+    subprocess.Popen(["mv", "_site", dest])
     return "OK", 200
 
 
