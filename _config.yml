@@ -16,14 +16,14 @@ timezone: Asia/Shanghai
 
 title: ShelpAm # the main title
 
-tagline: ShelpAm's blog # it will display as the subtitle
+tagline: Share my points # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "http://blog.shelpa.me"
+url: "https://blog.shelpa.me"
 
 github:
   username: ShelpAm # change to your GitHub username
@@ -50,7 +50,7 @@ webmaster_verifications:
   bing: # fill in your Bing verification code
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
+  baidu: codeva-utq2iGTQAc # fill in your Baidu verification code
   facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------

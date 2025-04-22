@@ -20,11 +20,12 @@ Private networks shares the following addresses:
 127.0.0.0/8 is for loopback.
 
 Basically, other IP addresses could be regarded as public addresses. But to see in detail, refer to
-[rfc6890](rfc6890).
+[RFC6890][rfc6890].
+
+[rfc6890]: https://www.rfc-editor.org/rfc/rfc6890
 
 ## See also
 
 - <https://www.rfc-editor.org/rfc/rfc6890> for Special-Purpose IP Address Registries
 - <https://www.rfc-editor.org/rfc/rfc3927> for Link-Local Addresses
 
-[rfc6890]: https://www.rfc-editor.org/rfc/rfc6890
