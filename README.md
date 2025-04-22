@@ -30,6 +30,10 @@
 - To start the webhook server, run `python tools/webhook_server.py _site`, where you can replace
 `_site` by any other place you wish to generate the site to.
 
+### Notes
+
+This project is configured with webhook.
+
 ## ***The belows are README info from the original repository.***
 
 [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
