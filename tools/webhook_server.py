@@ -19,11 +19,8 @@ app = Flask(__name__)
 @app.route("/webhook", methods=["POST"])
 def webhook():
     # You can add a GitHub secret validation here if needed
-    print("Pulling from the server")
-    subprocess.Popen(["git", "pull"])
-    subprocess.Popen(["jekyll", "build"])
-    print(f"Moving _site to {dest}")
-    subprocess.Popen(["mv", "_site", dest])
+    print(f"Webhook triggered. (Re)deploying files to {dest}")
+    subprocess.Popen(["bash", "./tools/deploy.sh", dest])
     return "OK", 200
 
 

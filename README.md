@@ -25,9 +25,10 @@
 
 ### Usage
 
-- Start the server by `./tools/run.sh`
+- Start the server temperarily, run `./tools/run.sh`
 - To test the project: `./tools/test.sh`
-- To start the webhook server, run `python ./tools/webhook_server.py`
+- To start the webhook server, run `python tools/webhook_server.py _site`, where you can replace
+`_site` by any other place you wish to generate the site to.
 
 ## ***The belows are README info from the original repository.***
 
