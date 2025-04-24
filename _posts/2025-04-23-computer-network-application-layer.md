@@ -7,15 +7,14 @@ math: true
 
 DNS uses port 53 to communicate, and can be implemented by both TCP and UDP. (Usaully UDP)
 
-!! Use prompt here.
-
-Except when
-
-- Secondary name server syncs with primary servers.
-- The result returned from server is too long (, and thus truncated to 512 bytes, usaully),
-  - Now some clients signals that it can receive more than 512 B data,
-
-it uses TCP.
+> Except when:
+>
+> - Secondary name server syncs with primary servers,
+> - The result returned from server is too long (, and thus truncated to 512 bytes, usaully),
+>  - Now some clients support receiving more than 512B data,
+>
+> it uses TCP.
+{: .prompt-info }
 
 DNS resolvers are classified by a variety of query methods, such as _recursive_, _non-recursive_, and _iterative_.
 
@@ -33,7 +32,7 @@ Format: \<`name`, `TTL`, `class`, `type`, `value`\>
 where
 
 - `name` is domain name.
-- `TTL` is time to live.
+- `TTL` is time to live. Every hop decrease TTL by 1.
 - `class` is internet class, whose value can only be 0b0001 (Internet).
 - `type` is the type of RR, which has following possible values:
   - A - Address
@@ -48,42 +47,59 @@ where
 
 HTTP is stateless. It didn't remember what it did.
 
-### Versions
+### Overview of HTTP versions
 
-- HTTP 1.0, no pipeline，非持续连接
-  - Disconnects after sending/receiving data.
-- HTTP 1.1, features pipeline，持续连接
-  - Can send subsequent request without receiving acknowledgements from the server.
-- HTTP 2.0, features multiplexing of requests and responses to avoid some of the head-of-line
-  blocking problem (队头阻塞) in HTTP 1 (even when HTTP pipelining is used).
-- HTTP 3.0, switches to [QUIC](https://en.wikipedia.org/wiki/QUIC).
+- HTTP 1.0
+  - No pipelining: Must receive ACK for the current request before sending the next.
+  - Non-persistent connection: Disconnects after sending/receiving one message.
+- HTTP 1.1
+  - Pipelining: Allows sending subsequent requests without waiting for server ACKs.
+  - Persistent connection: Supports long-lived connections, reducing reconnect overhead.
+- HTTP 2.0
+  - Multiplexing: Parallel request/response transmission, mitigating head-of-line blocking issues from HTTP 1.x.
+- HTTP 3.0
+  - Based on [QUIC](https://en.wikipedia.org/wiki/QUIC): Improves performance with lower latency.
 
-### Format
+### HTTP message format
 
-Request
+- Request format
 
-```
-Method URL Version\<CRLF\>
-Header field name 1: value 1\<CRLF\>
-...
-Header field name n: value n\<CRLF\>
-\<CRLF\>
-Body
-```
+  ```
+  <method> <request-target> <protocol>
+  <header-field-name-1>: <value-1>
+  ...
+  <header-field-name-n>: <value-n>
+  <CRLF>
+  <body>
+  ```
 
-Response
+- Response format
 
-TODO
+  ```
+  <protocol> <status-code> <status-text>
+  <header-field-name-1>: <value-1>
+  ...
+  <header-field-name-n>: <value-n>
+  <CRLF>
+  <body>
+  ```
 
+Where:
+
+- `<method>` typically can be `POST` `GET` `PUT` `DELETE` and so on.
+- `<request-target>` is a URL to uniquely identify a resource.
+- `<protocol>` is http version.
+- `<CRLF>` means carriage return and line feed.
 
 ## FTP (File Transfer Protocol)
 
-FTP has two modes
+FTP may run in _active_ or _passive_ mode, which determines how the data connection is established.
 
-- Active mode
-  - In which server listens on port 21 for control connection
-  - 
-
-
-- Passive mode
-  - Behavior
+- In **active mode**, the client starts listening for incoming data connections from the server on port M.
+  It sends the FTP command PORT M to inform the server on which port it is listening.
+  The server then initiates a data channel to the client from its port 20, the FTP server data port.
+- In situations where the client is behind a firewall and unable to accept incoming TCP connections,
+  **passive mode** may be used. In this mode, the client uses the control connection to send a PASV command
+  to the server and then receives a server IP address and server port number from the server, which
+  the client then uses to open a data connection from an arbitrary client port to the server IP address
+  and server port number received.
