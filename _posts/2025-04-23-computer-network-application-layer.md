@@ -45,22 +45,25 @@ where
 
 ## HTTP (HyperText Transfer Protocol)
 
-HTTP is stateless. It didn't remember what it did.
+HTTP has following features:
+
+- Stateless, as it doesn't remember what it did.
+- Text-based.
 
 ### Overview of HTTP versions
 
-- HTTP 1.0
+- HTTP/1.0
   - No pipelining: Must receive ACK for the current request before sending the next, acts like a
     stop-wait protocol.
   - Non-persistent connection: Disconnects after sending/receiving one message.
-- HTTP 1.1
+- HTTP/1.1
   - Pipelining: Allows sending subsequent requests without waiting for server ACKs. This reduce the
     impact of "stop-wait", but still may cause head-of-line blocking issues.
   - Persistent connection: Supports long-lived connections, reducing reconnect overhead.
-- HTTP 2.0
+- HTTP/2.0
   - Multiplexing: Parallel request/response transmission, eliminating head-of-line blocking issues
     from HTTP 1.x.
-- HTTP 3.0
+- HTTP/3.0
   - Based on [QUIC](https://en.wikipedia.org/wiki/QUIC): Improves performance with lower latency.
 
 ### HTTP message format
