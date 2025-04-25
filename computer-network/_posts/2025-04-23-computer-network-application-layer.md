@@ -1,6 +1,4 @@
 ---
-categories: notes-computer-network
-math: true
 ---
 
 ## DNS (Domain Name System)

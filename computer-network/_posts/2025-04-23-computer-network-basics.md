@@ -1,5 +1,4 @@
 ---
-categories: notes-computer-network
 math: true
 ---
 

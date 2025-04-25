@@ -1,15 +1,14 @@
 ---
-title: Network addresses
-categories: notes-computer-network
+title: IP Address Space
 ---
 
 ## Introduction
 
 There are many kinds of networks, like private, public, reserved, and loopback.
 
-## Address spaces
+## Address space
 
-Private networks shares the following addresses:
+Private networks include the following addresses:
 
 - 10.0.0.0/8
 - 172.16.0.0/12
