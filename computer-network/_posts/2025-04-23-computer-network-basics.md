@@ -12,19 +12,18 @@ There are three data switching methods:
 
 ## Delays in Computer Network
 
-
 - Transmission delay - time it takes to push the packet's bits onto the link
   - It is given by the following formula:
 
-    $ D_T = N/R $ seconds
+    $$ D_T = N/R $$ seconds
 
     where:
 
-    $ D_T $ is the transmission delay in seconds;
+    $$ D_T $$ is the transmission delay in seconds;
 
-    $ N $ is the number of bits;
+    $$ N $$ is the number of bits;
 
-    $ R $ is the rate of transmission (say, in bits per second).
+    $$ R $$ is the rate of transmission (say, in bits per second).
 
 - Propagation delay
 - Queuing delay
@@ -40,11 +39,19 @@ There are three data switching methods:
 - **Bandwidth-delay product**, the maximum amount of data on the network circuit at any given time,
   i.e., data that has been transmitted but not yet acknowledged
 - **Round-trip time**, also known as RTT
-- 信道利用率 - 信道占用时间占总时间的百分比，网络利用率 - 全网络的信道利用率的加权平均值。
+  
+  有效数据率 (平均吞吐量):
 
-  若 D 是当前时延，D_0 是空闲时延，则：
-  $$ D = {fraction D_0 (1 - U)} $$
-  网络利用率越高，时延越高。
+  $$ Average Throughput = \frac{Data Length}{Transmission Delay + RTT} $$
+
+- 信道利用率 - 信道占用时间占总时间的百分比
+- 网络利用率 - 全网络的信道利用率的加权平均值。
+
+  若 $$ D $$ 是当前时延，$$ D_0 $$ 是空闲时延，$$ U $$ 是网络利用率，则：
+
+  $$ D = \frac{D_0}{1 - U} $$
+
+  即网络利用率越高，时延越高。
 
 ## Network protocol
 
@@ -52,13 +59,35 @@ There are three data switching methods:
 
 Rules, standards or conventions built up for data switching in network.
 
+Protocols are "horizontal"; services are "vertical".
+
 ### Three elements of a network protocol:
 
 - Syntax (语法)
 - Semantics (语义)
 - Timing (同步)
 
-### OSI (Open System Interconnection) model
+### Terminologies
+
+Entity
+: Hardwares and softwares which can send/receive information.
+
+> Peer Entity (对等实体) 间通信使得每层可以为上一层提供服务。
+{: .prompt-tip }
+
+Protocol Data Unit (PDU)
+: The basic unit of data switching between protocols.
+
+Service Data Unit (SDU)
+: The basic unit of data switching between services.
+
+Service primitives
+: Commands defined for service delivery.
+
+Service Access Point (SAP)
+: Interface for service delivery.
+
+### Open System Interconnection (OSI) model
 
 Seven layers in OSI model are the followings:
 
@@ -70,7 +99,19 @@ Seven layers in OSI model are the followings:
 - Presentation
 - Application
 
-where layers of Physical, Data Link, Network, Transport, Application are in 5 layers in production.
+The following are PDUs of them:
+
+- For physical layer, it is _bit_.
+- For data link layer, it is _frame_.
+- For network layer, it is _packet_ or _datagram_.
+- For transport layer, it is _segment_.
+- For application layer, it is _message_.
+
+### TCP/IP model
+
+- 4 Layers
+  - Application layer, transport layer, internet layer, and link layer
+- Now widely used
 
 ### Socket
 

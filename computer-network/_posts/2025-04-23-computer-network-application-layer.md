@@ -107,3 +107,12 @@ FTP may run in _active_ or _passive_ mode, which determines how the data connect
   to the server and then receives a server IP address and server port number from the server, which
   the client then uses to open a data connection from an arbitrary client port to the server IP address
   and server port number received.
+
+Examples of FTP commands:
+
+```ftp
+PORT x,y,z,w,p,q
+```
+
+In this example, the server sets up a connection to x.y.z.w:p*256+q .
+
