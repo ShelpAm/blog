@@ -53,18 +53,6 @@ Four algorithms build the congestion control mechnism up. They're:
   - If a peer receives three duplicate ACKs, fast retransmission and fast recovery start. It begins
     to send those unreceived packets and divide CWND by 2 (without touching ssthresh).
 
-definition term 1
-definition term 2
-: This is the first line. Since the first non-space characters appears in
-column 3, all other lines have to be indented 2 spaces (or lazy syntax may
-  be used after an indented line). This tells kramdown that the lines
-  belong to the definition.
-:       This is the another definition for the same term. It uses a
-        different number of spaces for indentation which is okay but
-        should generally be avoided.
-   : The definition marker is indented 3 spaces which is allowed but
-     should also be avoided.
-
 ### Relationship between TCP and ARQ
 
 They are NEITHER the same NOR fully inclusive. They share some property but never have the
