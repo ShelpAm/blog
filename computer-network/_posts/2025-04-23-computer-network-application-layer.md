@@ -116,3 +116,30 @@ PORT x,y,z,w,p,q
 
 In this example, the server sets up a connection to x.y.z.w:p*256+q .
 
+## Trivial File Transfer Protocol (TFTP)
+
+A kind of Stop and Wait protocol.
+
+ASCII and Binary.
+
+## Email
+
+### Simple Mail Transport Protocol (SMTP)
+
+Sending.
+
+Only accepts ASCII Text.
+
+Port 25.
+
+### Post Office Protocol 3 (POP3)
+
+Receiving.
+
+Port 110.
+
+### Internet Message Access Procol (IMAP)
+
+Receiving.
+
+Port .
