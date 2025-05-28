@@ -8,6 +8,8 @@ There are many kinds of networks, like private, public, reserved, and loopback.
 
 ## Address space
 
+### IPv4
+
 Private networks include the following addresses:
 
 - 10.0.0.0/8
@@ -22,6 +24,10 @@ Basically, other IP addresses could be regarded as public addresses. But to see 
 [RFC6890][rfc6890].
 
 [rfc6890]: https://www.rfc-editor.org/rfc/rfc6890
+
+### IPv6
+
+To be continued.
 
 ## See also
 
