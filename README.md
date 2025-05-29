@@ -7,10 +7,12 @@
 1. `sudo apt-get install ruby-full build-essential zlib1g-dev git`
 1. Run the following code to init gem paths:
     ```bash
-    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
-    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
-    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
-    source ~/.bashrc
+    cat <<EOF >> ~/.profile
+    # Install Ruby Gems to ~/gems
+    export GEM_HOME="$HOME/gems"
+    export PATH="$HOME/gems/bin:$PATH"
+    EOF
+    source ~/.bash_profile
     ```
 1. Clone this repository and change to that directory.
     ```bash
