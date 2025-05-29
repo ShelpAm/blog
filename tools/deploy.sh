@@ -13,9 +13,5 @@ DEST="${1}"
 
 echo "Deploying to $DEST"
 
-# Enable password-free `git pull`
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-
 git pull
 jekyll build --destination "$DEST"
