@@ -97,6 +97,8 @@ Where:
 
 ## FTP (File Transfer Protocol)
 
+For controlling connection, it uses tcp port 21.
+
 FTP may run in _active_ or _passive_ mode, which determines how the data connection is established.
 
 - In **active mode**, the client starts listening for incoming data connections from the server on port M.
