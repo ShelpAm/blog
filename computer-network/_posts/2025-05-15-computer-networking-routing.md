@@ -104,3 +104,11 @@ Dijkstra is an example of a link state algorithm.
 - Each router finds the shortest path spanning tree to every other router.
 
 It is the basis of Open Shortest Path First (**OSPF**) a very widely used routing protocol.
+
+
+> RIP is built on top of UDP:520.
+>
+> OSPF is built on top of IP:89.
+>
+> BGP is built on top of TCP:179.
+{: .prompt-tip }
