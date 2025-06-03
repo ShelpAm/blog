@@ -97,7 +97,7 @@ Where:
 
 ## FTP (File Transfer Protocol)
 
-For controlling connection, it uses tcp port 21.
+For controlling connection, it uses TCP port 21.
 
 FTP may run in _active_ or _passive_ mode, which determines how the data connection is established.
 
@@ -138,7 +138,9 @@ Port 25.
 
 Receiving.
 
-Port 110.
+TCP port 110.
+
+POP3S uses TCP port 995.
 
 ### Internet Message Access Procol (IMAP)
 
