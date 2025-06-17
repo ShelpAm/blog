@@ -83,7 +83,7 @@ cost to $$R_3$$.
 
 Bellman-Ford algorithm is an example of Distance Vector algorithm.
 
-It was used in the first Internet routing protocol, called Routing Information Protocl (**RIP**).
+It was used in the first Internet routing protocol, called Routing Information Protocol (**RIP**).
 
 It requires little computation on the routers, is distributed, and will eventually converged.
 
@@ -105,6 +105,48 @@ Dijkstra is an example of a link state algorithm.
 
 It is the basis of Open Shortest Path First (**OSPF**) a very widely used routing protocol.
 
+## Interior Gateway Protocol (**IGP**)
+
+RIP, OSPF and ISIS are all IGP. They cooperate with BGP, offering AS route messages.
+
+## Exterior Gateway Protocol (**EGP**)
+
+Today, when people say EGP, they usually mean [BGP](#border-gateway-protocol-bgp), which is the **de facto Exterior Gateway Protocol**
+on the Internet.
+
+## Border Gateway Protocol (**BGP**)
+
+BGP is the modern, scalable, and flexible protocol used to exchange routes between ASes.
+
+All AS's in the Internet **MUST** connect using BGP-4.
+
+BPG
+
+- Is a path vector algorithm, allowing loops to be detected easily.
+- Has a rich and complex interface to let AS's choose a local, private policy.
+  - Each AS decides a local policy for traffic engineering, security and any private preferences.
+
+### iBGP (Internal BGP) and eBGP (External BGP)
+
+In eBGP, if one AS receives updates (usually in the form of `To reach x.y.z.w/n, go through [ASaaa,
+ASbbb, ASccc, ..., ASxxx]`), it appends itself (say ASyyy) to the list, like `To reach x.y.z.w/n, go
+through [ASyyy, ASaaa, ASbbb, ASccc, ..., ASxxx]`.
+
+See more examples in [BGP example]({% link computer-network/bgp-example.md %}) and <https://chatgpt.com/s/t_6850fc64a8948191887e5740c07fe17f>.
+
+In iBGP, one router advertises information it learned from other ASes to all other routers within
+the same AS.
+
+Rules routers follow in iBGP:
+- iBGP routers do NOT advertise routes learned from one iBGP peer to another iBGP peer to prevent loops.
+- Therefore, all iBGP routers must be fully meshed (each peer connected to every other peer), OR use **route reflectors** or **confederations** to scale.
+
+### Four types of messages in BGP
+
+- Open: Establish a BGP session.
+- Keep-Alive: Handshake at regular intervals.
+- Notification: Shuts down a peering session.
+- Update: _Announcing_ new routes or _withdrawing_ previously announced routes.
 
 > RIP is built on top of UDP:520.
 >

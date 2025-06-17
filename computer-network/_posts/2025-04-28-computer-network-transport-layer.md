@@ -49,7 +49,7 @@ Four algorithms build the congestion control mechnism up. They're:
 - Congestion avoidance - After reached ssthresh, adding CWND by 1 until timeout. After timeout,
   then set ssthresh to $$ CWND / 2 $$ and CWND to 1.
 - Fast retransmission - Trigger together with [Fast recovery](#fast-recovery).
-- Fast recovery <a id="fast-recovery"></a>
+- Fast recovery <a href="#" id="fast-recovery"></a>
   - If a peer receives three duplicate ACKs, fast retransmission and fast recovery start. It begins
     to send those unreceived packets and divide CWND by 2 (without touching ssthresh).
 
