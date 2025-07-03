@@ -15,7 +15,7 @@ It seemed that I didn't install corresponding nvidia graphic card driver. And
 
 Searching the web, I found this post:
 https://discussion.fedoraproject.org/t/nvidia-kernel-module-missing-falling-back-to-nouveau/146642
-. Thanks to [leigh123linux][leigh123linux], here is what he said:
+. Thanks to [leigh123linux][leigh123linux], here is [what he said](https://discussion.fedoraproject.org/t/nvidia-kernel-module-missing-falling-back-to-nouveau/146642/23):
 
 > You can disable compression in /usr/lib/rpm/macros.d/macros.kmodtool , edit line#67
 >
