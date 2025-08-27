@@ -70,4 +70,4 @@ more difficult to get high performance.
 Page table maps virtual addresses to physical addresses. Every process has own page table, and can
 only access addresses in the page table. And this gives us very strong memory isolation.
 
-To learn more details, see [Name of Link]({% post_url 2025-08-24-os-organization-and-system-calls %}).
+To learn more details, see [Page Tables]({% post_url operating-system/2025-08-27-page-tables %}).

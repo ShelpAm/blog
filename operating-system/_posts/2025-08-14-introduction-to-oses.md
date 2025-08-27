@@ -41,3 +41,8 @@ Hardware:   CPU RAM DISK NET
 
 > QEMU is a hardware simulator. And we'll use it accross the course.
 {: .prompt-tip }
+
+## Useful links:
+
+* [Schedule of MIT 6.S081 2024](https://pdos.csail.mit.edu/6.828/2024/schedule.html)
+* [Lectures 2020](https://www.bilibili.com/video/BV19k4y1C7kA/?p=3&share_source=copy_web&vd_source=9d56f184caaa09e951606e4800ea1121)
