@@ -6,3 +6,6 @@ Some registers that may help work out the error in riscv:
 I'm a big fool! I misused strcpy, and tried to use it to compare a NULL-terminated string to a pointer,
 returning 0 if the prefixes match. It took me hours to realize...
 
+## Some GDB tips
+
+To break at a raw virtual address: `b *<virtual-address>`.

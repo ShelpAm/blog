@@ -6,6 +6,7 @@
 prod=false
 command="bundle exec jekyll s -l"
 host="127.0.0.1"
+drafts=false
 
 help() {
   echo "Usage:"
@@ -33,6 +34,10 @@ while (($#)); do
     help
     exit 0
     ;;
+  --drafts)
+    drafts=true
+    shift
+    ;;
   *)
     echo -e "> Unknown option: '$opt'\n"
     help
@@ -45,6 +50,10 @@ command="$command -H $host"
 
 if $prod; then
   command="JEKYLL_ENV=production $command"
+fi
+
+if $drafts; then
+  command="$command --drafts"
 fi
 
 if [ -e /proc/1/cgroup ] && grep -q docker /proc/1/cgroup; then
