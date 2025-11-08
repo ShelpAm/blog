@@ -1,4 +1,8 @@
-## Grant priviledges
+---
+title: Database Systems - Privilege Management
+---
+
+## Grant privileges
 
 ### Syntax
 
@@ -15,7 +19,7 @@ TO <USER> [<USER1> <USER2> ...]
 - `WITH GRANT OPTION` 允许被授权的用户传播其权力。
 
 
-## Revoke priviledges
+## Revoke privileges
 
 ### Syntax
 
@@ -55,7 +59,7 @@ GRANT <CHARACTER>
 TO <USER> [<USER1> <USER2> ...]
 ```
 
-## Mandotary Access Control and Discretionary Access Control
+## Mandatory Access Control and Discretionary Access Control
 
 DAC (自主存取控制)：只对登录系统的用户进行验证，拷入U盘内加密失效。
 
