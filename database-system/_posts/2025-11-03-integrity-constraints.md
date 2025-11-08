@@ -1,6 +1,8 @@
 ---
-title: Database Systems - Integrity Constraints on DB
+title: Database System - Integrity Constraints on DB
 ---
+
+关系的两个不变性：**实体完整性**和**参照完整性**。
 
 ## 符号定义
 
@@ -12,10 +14,17 @@ title: Database Systems - Integrity Constraints on DB
 
 ## Entity integrity (实体完整性)
 
+主码非空且唯一。
+
 ## Referential integrity (参照完整性)
+
+外码值必为以下中的其中一种：
+- 空
+- 所参照的主码的可能的取值
 
 ## User-defined integrity (用户定义的完整性)
 
+## Define constraints on a database
 
 ### 元组上的约束
 

@@ -1,5 +1,5 @@
 ---
-title: Database Systems - Privilege Management
+title: Database System - Privilege Management
 ---
 
 ## Grant privileges

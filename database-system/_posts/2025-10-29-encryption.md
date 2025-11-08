@@ -1,5 +1,5 @@
 ---
-title: Database Systems - Encryption
+title: Database System - Encryption
 ---
 
 Encryption refers to the process of transforming data into a form that is unreadable,
