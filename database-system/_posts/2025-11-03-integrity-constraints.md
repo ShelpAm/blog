@@ -2,7 +2,7 @@
 title: Database System - Integrity Constraints on DB
 ---
 
-关系的两个不变性：**实体完整性**和**参照完整性**。
+关系的两个不变性：[实体完整性](#entity-integrity-实体完整性)和[参照完整性](#referential-integrity-参照完整性)。
 
 ## 符号定义
 
@@ -12,15 +12,34 @@ title: Database System - Integrity Constraints on DB
 > 要修改 CONSTRAINT ，可先 DROP 后 ADD 。
 {: .prompt-tip }
 
+> Don't forget to add `,` to seperate different table-level constraints.
+{: .prompt-tip }
+
 ## Entity integrity (实体完整性)
 
 主码非空且唯一。
 
+### Define entity integrity constraints
+
+Add the following to table-level constraints:
+```sql
+PRIMARY KEY(<KEY> [, <KEY1>, <KEY2>, ...])
+```
+
 ## Referential integrity (参照完整性)
 
-外码值必为以下中的其中一种：
-- 空
-- 所参照的主码的可能的取值
+外码值必需满足以下条件其一：
+- 为空
+- 存在于被参照关系的主码中
+
+这是为了防止产生 dangling pointer。
+
+### Define referential integrity constraints
+
+Add the following to table-level constraints:
+```sql
+FOREIGN KEY <KEY> REFERENCING <REFERENCED_TABLE>(<FOREIGN_KEY>)
+```
 
 ## User-defined integrity (用户定义的完整性)
 
