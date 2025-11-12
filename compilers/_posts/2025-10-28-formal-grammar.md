@@ -19,13 +19,13 @@ FIRST set (FIRST 集) 是由给定串能推导到的所有第一个终结符的�
 ### Derive the FIRST set according to its definition
 
 1. 对于推导规则 $$S \to X_0 X_1 X_2 ... X_n$$，找到第一个不能导空的符号（记为 $$j$$），则令
-   $$\text{FIRST}(S) := \text{FIRST}(X_0) \cup \text{FIRST}(X_1) \cup \dots \cup \{X_j\}$$。
+   $$\text{FIRST}(S) := \text{FIRST}(X_0) \cup \text{FIRST}(X_1) \cup \dots \cup \{X_j\} - \{\varepsilon\}$$。
 1. 若此串能推导为空，则集合加上 $$\varepsilon$$。
 
 
 ## FOLLOW set
 
-FOLLOW set (FOLLOW 集)是由给定串后可能出现的所有终结符的集合。
+FOLLOW set (FOLLOW 集)是由给定非终结符后可能出现的所有终结符的集合。
 
 ### Derive the FOLLOW set according to its definition
 

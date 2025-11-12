@@ -58,10 +58,11 @@ CREATE TABLE <TABLE_NAME> (
 ## Trigger
 
 Trigger (触发器) 在 UPDATE, DELETE, INSERT (不包含 SELECT) 时自动执行一些
-_可自定义的_脚本。触发器只能定义在基本表中，而不能定义在 view (视图) 上。
+_可自定义的_脚本。触发器只能定义在基本表中，而不能定义在 [view (视图)]({% post_url database-system/2025-11-09-basic-sql %}#view) 上。
 
-### Define a trigger
+### Create a trigger
 
+Standard SQL:
 ```sql
 CREATE TRIGGER <TRIGGER>
 AFTER|BEFORE <OPERATION> ON <TABLE>
@@ -72,9 +73,30 @@ BEGIN
 END
 ```
 
+Postgresql has some **differences against** Standard SQL:
+```sql
+CREATE FUNCTION <FUNCTION>() RETURNS TRIGGER
+AS $$
+BEGIN # OLD and NEW are implicitly defined here.
+    <STATEMENTs>
+    ...
+    RETURN NEW|OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER <TRIGGER>
+BEFORE <OPERATION> ON <TABLE>
+FOR EACH ROW
+EXECUTE FUNCTION <FUNCTION>();
+```
+
 ### Drop a trigger
 
 ```sql
 DROP TRIGGER <TRIGGER> ON <TABLE>
 ```
+
+### Modify a trigger
+
+To modify a trigger, you can first drop it then re-create it.
 
