@@ -23,8 +23,8 @@ Otherwise, it is non-trivial.
 
 ### 完全函数依赖与部分函数依赖
 
-若任意 X 的真子集 X' 都不存在 X' -> Y，
-则 X -> Y 是完全函数依赖，
+若任意 $X$ 的真子集 $X'$ 都不存在 $X' \to Y$，
+则 $X \to Y$ 是完全函数依赖，
 否则是部分函数依赖。
 
 - 完全函数依赖记作：$X \xrightarrow{F} Y$
@@ -38,7 +38,7 @@ Otherwise, it is non-trivial.
 
 ### Transitive functional dependency
 
-If X -> Y and Y -> Z, then X -> Z, is a transitive functional dependency.
+If $X \to Y$ and $Y \to Z$, then $X \to Z$ is a transitive functional dependency.
 
 ## Key
 
