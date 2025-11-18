@@ -12,6 +12,7 @@ Definition, see [Functional Dependency]({% post_url database-system/_posts/2025-
 Functional dependency is dependent on semantics of data.
 
 ### Trivial and non-trivial functional dependency
+> 平凡/非平凡函数依赖
 
 Given that $X \to Y$,
 
@@ -37,6 +38,7 @@ Otherwise, it is non-trivial.
 
 
 ### Transitive functional dependency
+> 传递函数依赖
 
 If $X \to Y$ and $Y \to Z$, then $X \to Z$ is a transitive functional dependency.
 
@@ -52,5 +54,17 @@ Requirements for 1NF:
 
 1. 2NF
 1. 3NF
-1. BCNF
+
+不存在非主属性对主码的部分函数依赖和传递函数依赖。
+
+1. BCNF (Boyce Codd Normal Form)
+> aka 修正第三范式
+
+不存在任何一属性对主码有部分函数依赖和传递函数依赖。
+
+> 软件开发中通常要达到BCNF。
+{:.prompt-info}
+
 1. 4NF
+
+哈哈一个两列的表满足所有的范式～～

@@ -27,6 +27,7 @@ title: Database System - The Theory of Relational Database
   determined, then we say that `f` is dependent on `x`.
 
 - **Multivalued dependency** (多值依赖)
+
 - **传递依赖**
 
 ## Normalization

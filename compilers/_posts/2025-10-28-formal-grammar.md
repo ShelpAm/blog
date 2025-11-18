@@ -130,8 +130,50 @@ $$
 |Y|...|||
 |Z||||
 
+示例 C++ 实现，见 [GitHub compilers-labs](https://github.com/ShelpAm/compilers-labs/blob/1ec8596f88359a8ac5824bf21f1de7a7ae6e80dc/grammar.cpp#L285)：
+```cpp
+bool Grammar::match(Symbol_string s) const
+{
+    assert(std::ranges::all_of(
+        s, [this](auto const &s) { return terminals_.contains(s); }));
+
+    s.push_back(eol);
+    Symbol_string t{eol, begin_}; // Acts as a stack
+    auto ll1t = ll1_parse_table();
+    while (!t.empty()) {
+        // std::println("t={}  {}=s", t, s);
+        if (terminals_.contains(t.back()) || t.back() == eol) {
+            if (t.back() != s.front()) {
+                // std::println("Terminal doesn't match, failed to match");
+                return false;
+            }
+            t.pop_back();
+            s.pop_front();
+            continue;
+        }
+        auto jt = ll1t[t.back()].find(s.front());
+        if (jt == ll1t[t.back()].end()) {
+            // std::println("No item to match, failed to match");
+            return false;
+        }
+        auto const &prod = jt->second;
+        // std::println("Using production {}", prod);
+        assert(prod.from == t.back());
+        t.pop_back();
+        if (!is_epsilon(prod.to))
+            t.insert_range(t.end(), prod.to | std::views::reverse);
+    }
+    // No need to check eol because t won't contain eol. TODO: maybe this should
+    // be checked?
+    // std::println("All symbols in t matched, matching ok");
+    return true;
+}
+```
+
 ### 递归下降法
 
 若 $$\text{SELECT}(A \to \beta)$$ 间无交集，则可用递归实现 `switch (symbol) { case beta[0]: case
 beta[1]:  }`。
+
+一个抽象的 C++ 实现，见 [GitHub compilers-labs](https://github.com/ShelpAm/compilers-labs/blob/2a1a1dbe0ad78243959e73878478b85c65df42d6/grammar.cpp#L373)。
 
