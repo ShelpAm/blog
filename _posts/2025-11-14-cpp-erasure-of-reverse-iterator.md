@@ -1,5 +1,7 @@
 ---
 title: C++ - Erasure of container::reverse_iterator
+tags:
+- cpp
 ---
 
 ## TL;DR

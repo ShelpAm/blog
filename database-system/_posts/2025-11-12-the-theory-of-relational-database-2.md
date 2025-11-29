@@ -16,8 +16,8 @@ math: true
 
 NF is of functional dependency on a relation.
 
- And you should simplify the relation into its canonical cover
-to determine which NF the relation is in.
+And you should simplify the relation into its canonical cover to determine which NF the relation is
+in.
 
 If we denote each dependency as $\alpha \to \beta$ (decompose $\beta$ into
 $\alpha \to \beta_1, \alpha \to \beta_2, \dots, \alpha \to \beta_n$), then the following holds:
@@ -33,13 +33,21 @@ $\alpha \to \beta_1, \alpha \to \beta_2, \dots, \alpha \to \beta_n$), then the f
 > 软件开发中通常要达到3NF。
 {:.prompt-info}
 
-### BCNF (Boyce Codd Normal Form, aka 修正第三范式)
+### Decomposition into 3NF
+
+1. Find all missing attributes in functional dependencies, extract them into a single relation.
+2. For each remaining dependency, group them into relations as $R_1(X_1 \dots X_k), R_2, \dots, R_n$.
+3. If primary key $K$ doesn't exist in any $R_i$, add relation $R_{n+1}(K)$
+
+### Decomposition into BCNF (Boyce Codd Normal Form, aka 修正第三范式)
 
 - Decomposite the relation into $\alpha \cup \beta$ and $R - (\beta - \alpha)$ to achieve BCNF.
 
+每次去掉一个影响最小的，直到满足BCNF。
+
 > Drawback of BCNF:
 >
-> BCNF doesn't have dependency preservation.
+> BCNF doesn't have [dependency preservation](#dependency-preservation) (函数依赖保持).
 >
 {: .prompt-warning }
 
