@@ -35,3 +35,36 @@ There are two variants for defining a package:
 - conanfile.txt
 - conanfile.py
 
+A basic `conanfile.py` file looks like this:
+```py
+from conan import ConanFile
+
+class YourRecipe(ConanFile):
+    name = "project-name"
+    version = "0.1"
+    settings = "os", "compiler", "build_type", "arch" # Stay as not changed
+
+    default_options = {
+        "package/ver:opt": True, # Or False
+    }
+
+    requires = (
+        "package1/ver",
+    )
+
+    generators = (
+        "CMakeDeps",
+        "CMakeToolchain",
+    )
+```
+
+With the example above, you can install your dependencies by:
+```bash
+conan install . -of build -b missing -pr default # and other -pr you want to use
+```
+
+After that, use the following to configure cmake:
+```bash
+cmake --preset conan-release # or conan-debug and so and so forth
+# you can provide other settings like -G "Ninja Multi-Config"
+```

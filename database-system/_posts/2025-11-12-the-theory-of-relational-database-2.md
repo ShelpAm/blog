@@ -1,5 +1,5 @@
 ---
-title: Database System - The Theory of Relational Database (2)
+title: Database System - The Theory of Relational Database (2) - Normalization
 math: true
 ---
 
@@ -31,23 +31,30 @@ $\alpha \to \beta_1, \alpha \to \beta_2, \dots, \alpha \to \beta_n$), then the f
 , where each NF is based on lower level NFs.
 
 > 软件开发中通常要达到3NF。
-{:.prompt-info}
+{: .prompt-info }
 
 ### Decomposition into 3NF
 
 1. Find all missing attributes in functional dependencies, extract them into a single relation.
 2. For each remaining dependency, group them into relations as $R_1(X_1 \dots X_k), R_2, \dots, R_n$.
-3. If primary key $K$ doesn't exist in any $R_i$, add relation $R_{n+1}(K)$
+3. If none of candidate key $K$ is contained in any $R_i$, select any candidate key $K_j$ and add
+   relation $R_{n+1}(K_j)$ (with no functional dependency).
+
+> If you're attending examination in JXNU, notice the following. In step 3, you must add some
+> candidate key and then consider remove it from ralations because of already being contained in
+> some relation.
+{: .prompt-danger }
 
 ### Decomposition into BCNF (Boyce Codd Normal Form, aka 修正第三范式)
 
+While not satisfying BCNF, do the following:
 - Decomposite the relation into $\alpha \cup \beta$ and $R - (\beta - \alpha)$ to achieve BCNF.
 
-每次去掉一个影响最小的，直到满足BCNF。
+即每次去掉一个影响最小的，直到满足BCNF。
 
 > Drawback of BCNF:
 >
-> BCNF doesn't have [dependency preservation](#dependency-preservation) (函数依赖保持).
+> BCNF doesn't have [dependency preservation]({% post_url database-system/2025-11-12-the-theory-of-relational-database-1 %}#dependency-preservation) (函数依赖保持).
 >
 {: .prompt-warning }
 

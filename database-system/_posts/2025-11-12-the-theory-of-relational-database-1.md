@@ -3,8 +3,6 @@ title: Database System - The Theory of Relational Database (1)
 math: true
 ---
 
-> Think about this: What is good design of a database?
-
 ## Possible problems in bad designs
 
 - **Data redundancy**: 冗余数据。
@@ -14,6 +12,10 @@ math: true
 - **Insertion anomaly**: TODO 插入时无法插入（？）
 
 - **Deletion anomaly**: 删去时，将某些有用数据删去。
+
+A good design usually doesn't have above problems, but there are **exceptions**:
+- When performance is critical and data repeatness are less taken into account.
+
 
 ## Data dependency
 
@@ -95,16 +97,18 @@ To test a dependency denoted as $\alpha \to \beta$, if $F' = F - {\alpha \to \be
 
 1. Initialize candidate key set $C$.
 1. Find all attributes that doesn't appear in right-hand side, put them into $C$.
-1. 前面忘了，中间忘了，后面忘了
+1. ~~瞪眼法！~~
 
-### Decomposition
+## Decomposition
 
-#### Lossless decomposition
+$R$ decomposed into $R_1, R_2, \dots, R_n$ can be denoted as $\rho(R_1, R_2, \dots, R_n)$.
 
-Given R, decompose it into $R_1, R_2, \dots, R_n$, if $R_1 \Join R_2 \Join \dots \Join R_n = R$,
+### Lossless decomposition
+
+Given $R = \rho(R_1, R_2, \dots, R_n)$, if $R_1 \Join R_2 \Join \dots \Join R_n = R$,
 then it's a lossless decomposition.
 
-#### Dependency preservation
+### Dependency preservation
 
-Given R, decompose it into $R_1, R_2, \dots, R_n$, if all $\alpha \to \beta$ co-exist in some $R_i$,
+Given $R = \rho(R_1, R_2, \dots, R_n)$, if all $\alpha \to \beta$ co-exist in some $R_i$,
 then that decomposition has dependency preservation.
