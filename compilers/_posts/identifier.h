@@ -1,5 +1,6 @@
 #include <array>
 #include <cstddef>
+
 using TypePointer = void *;
 using Value = std::array<std::byte, 8>;
 
@@ -26,4 +27,10 @@ class Variable : public IdentifierBase {
     std::size_t level;
     std::size_t off;
 };
+
+class Enum : public IdentifierBase {
+    // ...
+};
+
+// ...
 // NOLINTEND

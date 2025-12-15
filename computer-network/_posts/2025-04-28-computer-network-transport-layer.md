@@ -10,7 +10,7 @@ math: true
 
 ### Automatic Repeat reQuest (ARQ)
 
-There are three ARQ protocols as following:
+There are three ARQ protocols as follows:
 
 - Stop and Wait protocol
 - Go Back N (GBN) protocol
