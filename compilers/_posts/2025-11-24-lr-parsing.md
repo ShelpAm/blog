@@ -175,9 +175,9 @@ S'
 \end{cases}
 $$
 
-## Relationship among those LR analyses
+## Relationship among LR parsing methods
 
-$LR(0) \subseteq SLR(1) \subseteq LALR(1) \subseteq LR(1)$
+$LR(0) \subseteq SLR(1) \subseteq LALR(1) \subseteq LR(1) \subset$ 二义性文法
 
-LR(0) is the most resticted (fitting in least cases), and LR(1) applies for most cases.
+无法构造 LR 分析表的文法称为二义性文法。
 
