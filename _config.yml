@@ -167,6 +167,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  # syntax_highlighter: coderay
+  # syntax_highlighter_opts:
+  #   line_numbers: table
+  #   bold_every: 10000000
 
 collections:
   tabs:

@@ -9,6 +9,10 @@ $\text{LR}(k)$ parsing is a bottom-up grammar parsing method, for which:
 
 ## Terminology
 
+> There're some error in above text. Read with caution.
+{: .prompt-danger }
+
+
 - Canonical sentential form (规范句型): sentences derived by rightmost derivation.
 - Canonical reduction (规范规约): left most reduction.
 - Canonical prefix (规范前缀): given canonical sentential form $\alpha \eita$, where $\eita$ is
@@ -34,22 +38,24 @@ LR parsing provides two tables (Action and Goto) to clarify this.
 
 - Accepting state: 包含拓广表达式 $S' \to S \cdot$ 的状态。
 
-- $\text{closure}(IS)$ is all LR items that can be inferred by LR item set $IS$.
-  1. $IS \in \text{closure}(IS)$
-  2. $\text{If } B \to \alpha \cdot A \beta \text{ and } A \to \pi, \text{ then add } A \to \cdot \pi \text{ to closure}(IS)$
+- $closure(IS)$ is all LR items that can be inferred by LR item set $IS$.
+  1. $IS \in closure(IS)$
+  2. $\text{If } B \to \alpha \cdot A \beta \text{ and } A \to \pi, \text{ then add } A \to \cdot \pi \text{ to } closure(IS)$
 
-- $\text{project}(IS, X) = \lbrace A \to \alpha \cdot X \beta \mid A \to \alpha \cdot X \beta \in IS \rbrace$
+- $project(IS, X) = \lbrace A \to \alpha \cdot X \beta \mid A \to \alpha \cdot X \beta \in IS \rbrace$
   - 获取下一个符号为 $X$ 的子集。(X 可以为终结符)
 
-- $\text{shift}(IS, X) = \lbrace A \to \alpha X \cdot \beta \mid A \to \alpha \cdot X \beta \in IS \rbrace$
+- $shift(IS, X) = \lbrace A \to \alpha X \cdot \beta \mid A \to \alpha \cdot X \beta \in IS \rbrace$
   - 将所有 $IS$ 中下一个符号为 $X$ 的 LR 项目里的 $\cdot$ 都向右移一步。
 
-- $\text{goto}(IS, X) = \text{closure}(\text{shift}(\text{project}(IS, X), X))$
+- $goto(IS, X) = closure(shift(project(IS, X), X))$
   > 这里project实际上是重复的，因为shift已经有过滤X了；此处加上只是为了显示地表达需要过滤。
 
 #### Building the automaton graph
-1. Initially append an ending tag (#) to _start production_ (noted as $S' \to S \\#$).
-2. Initial state is $closure(\lbrace S' \to \cdot S \\# \rbrace)$.
+<!-- The following line seems to be incorrect. -->
+<!-- 1. Initially append an ending tag (#) to _start production_ (noted as $S' \to S \\#$). -->
+1. Initially augment the grammar: adding as start production $S' \to S$
+2. Initial state is $closure(\lbrace S' \to \cdot S \rbrace)$.
 3. For every availale $NextState = goto(CurrentState, X_i)$, add an edge $CurrentState \xrightarrow{X_i} NextState$.
 4. Repeat step 3 until no any new state, where "$\cdot$" always reaches the end.
 
@@ -80,7 +86,7 @@ Here is an example action/goto table:
 #### Definition
 
 $$
-\begin{align}
+\begin{align*}
   Action(S_i, X) &=
   \begin{cases}
   s_j, & \text{if there is an edge } S_i \xrightarrow{X} S_j, \\
@@ -89,7 +95,7 @@ $$
   \end{cases}
 \\
   Goto(S_i, X) &= j, \quad \text{ if there is an edge } S_i \xrightarrow{X} S_j
-\end{align}
+\end{align*}
 $$
 
 ### Using LR parsing tables
@@ -109,4 +115,69 @@ item) 的 FOLLOW 集及移入项目 (shift item) 两两之间无冲突，文法�
 
 ## LR(1) parsing
 
-## LALR(1)
+SLR(1) 分析在 FOLLOW 集与 shift item 冲突时也不可用。但 LR(1) 分析只考虑产生式中 _实际有的符号_ 来替代
+FOLLOW 集，从而再次减少冲突。
+
+具体地：
+- LR 项目后需另附展望符 (lookahead)。形式为：$X \to Y, a/b/\dots$。
+- $closure(IS) = IS \cup \lbrace A \to \cdot \pi, FIRST(\beta x_i)/\dots \mid X \to \alpha \cdot A \beta, x_i \in IS \rbrace$。
+
+  即：
+  - $IS \in closure(IS)$
+  - 对于 $IS$ 中所有形如 $X \to \alpha \cdot A \beta, x_i$ 的 LR 项目，$A \to \cdot \pi, FIRST(\beta x_i)/\dots$ 也属于 $closure(IS)$。
+
+> [!WARNING]
+> LR 项目的展望符也属于其签名，故展望符不同的 LR 项目算不同的项目。
+{: .prompt-warning }
+
+## LALR(1) parsing
+
+### Terminology
+
+- Core (项目核心/项目的心): LR item without lookahead (in a form of $X \to \alpha \cdot Y \beta$).
+
+### Merging LR(1) States
+
+LALR(1) involves merging states in LR(1) automaton.
+
+If two states have the same core, merge their lookaheads (for each item, merge individually).
+
+For instance:
+
+Before:
+
+$$
+\begin{align*}
+  S_1
+  &= 
+  \begin{cases}
+    X \to Y, p\\
+    A \to B, q
+  \end{cases}
+  \\
+  S_2
+  &=
+  \begin{cases}
+    X \to Y, r\\
+    A \to B, s
+  \end{cases}
+\end{align*}
+$$
+
+After:
+
+$$
+S'
+= 
+\begin{cases}
+  X \to Y, p/r\\
+  A \to B, q/s
+\end{cases}
+$$
+
+## Relationship among those LR analyses
+
+$LR(0) \subseteq SLR(1) \subseteq LALR(1) \subseteq LR(1)$
+
+LR(0) is the most resticted (fitting in least cases), and LR(1) applies for most cases.
+

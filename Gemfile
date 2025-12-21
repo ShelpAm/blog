@@ -12,3 +12,7 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# gem "kramdown-syntax-coderay", "~> 1.0"
+
+gem "kramdown-parser-gfm", "~> 1.1"
