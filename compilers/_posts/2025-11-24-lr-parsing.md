@@ -9,7 +9,7 @@ $\text{LR}(k)$ parsing is a bottom-up grammar parsing method, for which:
 
 ## Terminology
 
-> There're some error in above text. Read with caution.
+> There're some errors in this section. Read with caution.
 {: .prompt-danger }
 
 

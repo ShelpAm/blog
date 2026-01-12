@@ -61,6 +61,8 @@ TO <USER> [<USER1> <USER2> ...]
 
 ## Mandatory Access Control and Discretionary Access Control
 
+TODO P133 请补充定义，优点 P142
+
 DAC (自主存取控制)：只对登录系统的用户进行验证，拷入U盘内加密失效。
 
 MAC (强制存取控制)：对数据使用者的验证，拷入U盘内加密仍生效。
