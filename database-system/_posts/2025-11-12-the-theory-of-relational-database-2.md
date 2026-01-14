@@ -52,6 +52,10 @@ While not satisfying BCNF, do the following:
 
 即每次去掉一个影响最小的，直到满足BCNF。
 
+> [WARN]
+> 此处不清晰，需更新。。。
+{: .prompt-warning }
+
 > Drawback of BCNF:
 >
 > BCNF doesn't have [dependency preservation]({% post_url database-system/2025-11-12-the-theory-of-relational-database-1 %}#dependency-preservation) (函数依赖保持).
