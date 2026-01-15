@@ -1,5 +1,6 @@
 ---
 title: C++ - Copy-and-swap Idiom
+tags: [cpp]
 ---
 
 I faced an issue implementing BusTub P1 correctly. It's all about move semantic and resource
