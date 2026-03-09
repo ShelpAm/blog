@@ -8,11 +8,11 @@ RUN apk add --no-cache \
 WORKDIR /site
 
 COPY Gemfile* ./
-RUN gem update --system && gem install bundler && bundle install
+RUN gem install bundler && bundle install
 
 COPY . .
 
-RUN JEKYLL_ENV=production bundle exec jekyll build
+RUN bash tools/test.sh
 
 # Stage 2: Serve the static site with nginx
 FROM nginx:alpine AS server

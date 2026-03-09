@@ -34,25 +34,45 @@
 
 ### Docker Deployment
 
-Build and run the blog inside Docker (requires [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/)):
+Requires [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/).
+
+Two services are started together:
+
+| Service | Description | Port |
+|---------|-------------|------|
+| `blog` | nginx serving the built static site | 4000 |
+| `webhook` | Flask webhook server — triggers `tools/deploy.sh` on GitHub push | 9001 |
 
 ```bash
-# Build the image and start the container
+# Build images and start both services (from the repo root)
 docker compose up --build -d
 
 # The site will be available at http://localhost:4000
+# The webhook endpoint is at http://localhost:9001/webhook
 ```
 
-To stop the container:
+The `webhook` service bind-mounts the repo directory so `tools/deploy.sh` can run
+`git pull` inside the container and rebuild the site without restarting Docker.
+If your remote uses **SSH authentication**, also mount your key by uncommenting the
+relevant line in `docker-compose.yml`:
+
+```yaml
+# ~/.ssh:/root/.ssh:ro
+```
+
+To stop all services:
 
 ```bash
 docker compose down
 ```
 
-To rebuild after making changes to the site content:
+#### Simple static build (no webhook)
+
+If you only want to build a self-contained nginx image without the webhook server:
 
 ```bash
-docker compose up --build -d
+docker build -t blog .
+docker run -p 4000:80 blog
 ```
 
 ### Notes
