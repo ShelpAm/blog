@@ -43,16 +43,27 @@ class Widget {
 };
 ```
 
-Don't use `operator=(Widget&& other)`. In this way, destruction of original resource will be
+Don't use `operator=(Widget&& other)`. Otherwise, destruction of original resource will be
 deferred to destruction of outer other, which may **not** be what you want.
 
-If you want the resource to be **cleaned just in time**, or you want to **disable one of copy and/or move**,
-using seperated implementation for copy/move assignment, you can try the following:
+If you want the resource to be **cleaned just in time**, or you want to
+**disable either of copy and/or move**, try the following:
+
+- Move-only version
 ```cpp
 Widget& operator=(Widget &&other) noexcept { // note: passed by r-value reference.
-    // When implementing the `Widget const&` version, use `auto tmp = other;`.
     if (this != &other) {
         auto tmp = std::move(other);
+        swap(*this, tmp);  // swap the contents
+    }
+    return *this;
+}
+```
+- Copy-only version
+```cpp
+Widget& operator=(Widget const &other) noexcept { // note: passed by r-value reference.
+    if (this != &other) {
+        auto tmp = other;
         swap(*this, tmp);  // swap the contents
     }
     return *this;
