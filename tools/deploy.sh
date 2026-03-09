@@ -14,4 +14,4 @@ DEST="${1}"
 echo "Deploying to $DEST"
 
 git pull
-JEKYLL_ENV=production bundle exec jekyll b --destination "$DEST"
+JEKYLL_ENV=production bundle exec jekyll build --destination "$DEST"
