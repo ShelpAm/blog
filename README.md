@@ -32,6 +32,29 @@
 - To start the webhook server, run `python tools/webhook_server.py _site`, where you can replace
 `_site` by any other place you wish to generate the site to.
 
+### Docker Deployment
+
+Build and run the blog inside Docker (requires [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/)):
+
+```bash
+# Build the image and start the container
+docker compose up --build -d
+
+# The site will be available at http://localhost:4000
+```
+
+To stop the container:
+
+```bash
+docker compose down
+```
+
+To rebuild after making changes to the site content:
+
+```bash
+docker compose up --build -d
+```
+
 ### Notes
 
 This project is configured with webhook.

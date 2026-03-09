@@ -1,0 +1,34 @@
+# Version control
+.git
+.github
+.gitignore
+.gitattributes
+.gitmodules
+
+# Jekyll build output and cache
+_site
+.jekyll-cache
+.jekyll-metadata
+
+# Ruby/Bundler cache
+.bundle
+vendor
+
+# Node.js
+node_modules
+package-lock.json
+
+# Dev environment
+.devcontainer
+.editorconfig
+.vscode
+
+# SASS vendors cache
+_sass/vendors
+assets/js/dist
+
+# Misc
+*.gem
+*.log
+README.md
+LICENSE
