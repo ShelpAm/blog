@@ -1,24 +1,17 @@
-# Stage 1: Build the Jekyll site
-FROM ruby:3.3-alpine AS builder
+FROM debian
 
-RUN apk add --no-cache \
-    build-base \
-    git
+RUN apt-get install ruby-full build-essential zlib1g-dev git
 
-WORKDIR /site
+RUN cat <<EOF >> ~/.profile \
+  # Install Ruby Gems to ~/gems \
+  export GEM_HOME="$HOME/gems" \
+  export PATH="$HOME/gems/bin:$PATH" \
+  EOF \
+  source ~/.profile
 
-COPY Gemfile* ./
-RUN gem install bundler && bundle install
+COPY * ./
 
-COPY . .
+RUN gem install jekyll bundler
+RUN bundle
 
-RUN bash tools/test.sh
-
-# Stage 2: Serve the static site with nginx
-FROM nginx:alpine AS server
-
-COPY --from=builder /site/_site /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+RUN pip install -r requirements.txt
