@@ -61,7 +61,8 @@ Widget& operator=(Widget &&other) noexcept { // note: passed by r-value referenc
 ```
 - Copy-only version
 ```cpp
-Widget& operator=(Widget const &other) noexcept { // note: passed by r-value reference.
+Widget& operator=(Widget const &other) noexcept { // note: passed by r-value
+                                                  // reference.
     if (this != &other) {
         auto tmp = other;
         swap(*this, tmp);  // swap the contents
