@@ -1,5 +1,7 @@
-# Version control
-.git
+# `blog` depends on git version control, so we need to keep the .git directory
+# and related files. However, we can ignore other files that are not necessary
+# for the Docker build context.
+# .git
 .github
 .gitignore
 .gitattributes
