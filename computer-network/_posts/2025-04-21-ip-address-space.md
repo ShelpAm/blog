@@ -18,7 +18,7 @@ Private networks include the following addresses:
 
 169.254.0.0/16 is for link-local address.
 
-127.0.0.0/8 is for loopback.
+127.0.0.0/8 is reserved for loopback.
 
 Basically, other IP addresses could be regarded as public addresses. But to see in detail, refer to
 [RFC6890][rfc6890].
