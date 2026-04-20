@@ -125,14 +125,10 @@ stateDiagram
 
 ### Component Diagram
 
-Not officially supported by Mermaid:
-```mermaid
-```
+Not officially supported by Mermaid.
 
 ## 部署阶段
 
 ### Deployment Diagram
 
-Not officially supported by Mermaid:
-```mermaid
-```
+Not officially supported by Mermaid.
