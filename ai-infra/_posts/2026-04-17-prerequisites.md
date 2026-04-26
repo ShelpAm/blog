@@ -3,12 +3,12 @@ title: AI Infra - Prerequisites about Machine/Deep Learning
 math: true
 ---
 
-## Feed-Forward Network
+## Feed-forward network
 
 Feed-forward network is a type of network whose output is not a part of its
 input.
 
-## Multi-Layer Perception
+## Multi-layer perception
 
 Multi-layer perception (MLP) is a type of feed-forward neural network that
 consists of multiple layers of nodes, which are called hidden layers, where each
@@ -17,6 +17,11 @@ patterns in data by using non-linear activation functions and backpropagation
 for training.
 
 There're other neural networks like CNN, RNN.
+
+### Deep neural network
+
+Deep neural network (DNN) is a type of neural network that has multiple (at
+least 4) hidden layers. It's often complex and mixed.
 
 ## Architecture of Transformer
 
@@ -43,6 +48,24 @@ $d_{\mathrm{emb}}$ and $d_{\mathrm{model}}$.
 
 Didn't comprehend the positional encoding in detail. So just skip this
 (temporarily).
+
+### Encoder and decoder
+
+#### Encoder
+
+The encoder consists of two sublayers:
+- Multi-headed self-attension
+- Feed-forward network.
+
+Multi-headed self-attention layer has Q K V.
+
+Feed-Forward network is a 2-layered MLP:
+
+$$\mathrm{FFN}(x) = \phi(xW^{(1)} + b^{(1)})W^{(2)} + b^{(2)}$$
+
+where $\phi$ is activation function. The original paper used ReLU activation.
+
+See <https://en.wikipedia.org/wiki/Transformer_(deep_learning)#Encoder>
 
 ### Unembedding
 
