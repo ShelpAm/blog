@@ -23,6 +23,10 @@ There're other neural networks like CNN, RNN.
 Deep neural network (DNN) is a type of neural network that has multiple (at
 least 4) hidden layers. It's often complex and mixed.
 
+### Convolutional neural network
+
+Convolutional neural network (CNN, 卷积神经网络) is a type of neural network that (?)
+
 ## Architecture of Transformer
 
 Here we'll introduce the architecture of Transformer in the order of data flow.
